@@ -172,7 +172,7 @@ function BookCard({ book, user }) {
         <div className="w-full h-48 rounded-lg mb-4 overflow-hidden flex items-center justify-center bg-gray-100">
           {book.coverImage ? (
             <img
-              src={`${process.env.REACT_APP_BACKEND_URL || 'http://localhost:3000'}${book.coverImage}`}
+              src={`${process.env.REACT_APP_BACKEND_URL || 'https://library-backend-production-1103.up.railway.app'}${book.coverImage}`}
               alt={book.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
             />
@@ -257,4 +257,5 @@ function BookCard({ book, user }) {
       )}
     </>
   );
+
 }
