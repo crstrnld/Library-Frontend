@@ -45,7 +45,7 @@ export default function ProfilePage() {
         email: data.data.email,
       });
       if (data.data.profileImage) {
-        setPreviewImage(`http://localhost:3000${data.data.profileImage}`);
+        setPreviewImage(`https://library-backend-production-1103.up.railway.app{data.data.profileImage}`);
       }
     } catch (error) {
       toast.error('Failed to fetch profile');
@@ -297,4 +297,5 @@ export default function ProfilePage() {
       </Card>
     </div>
   );
+
 }
