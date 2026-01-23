@@ -60,7 +60,7 @@ export default function Navbar() {
               <>
                 <div className="hidden sm:flex items-center space-x-3">
                   <img
-                    src={user.profileImage ?   `http://localhost:3000${user.profileImage}` : `https://api.dicebear.com/7.x/avataaars/svg?seed=${user.email}`}
+                    src={user.profileImage ?   `https://library-backend-production-1103.up.railway.app${user.profileImage}` : `https://api.dicebear.com/7.x/avataaars/svg?seed=${user.email}`}
                     alt={user.name}
                     className="w-8 h-8 rounded-full border-2 border-blue-500 object-cover"
                   />
@@ -163,4 +163,5 @@ function MobileNavLink({ to, label }) {
       {label}
     </Link>
   );
+
 }
