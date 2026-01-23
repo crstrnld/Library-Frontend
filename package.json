@@ -16,15 +16,17 @@
     "react-hot-toast": "^2.6.0",
     "react-router-dom": "^7.12.0",
     "react-scripts": "5.0.1",
+    "serve": "^14.2.0",        // ✅ ditambahkan biar Railway bisa jalanin "serve -s build"
     "web-vitals": "^2.1.4",
     "zustand": "^5.0.10"
   },
   "scripts": {
-    "start": "serve -s build",
-    "build": "CI=false react-scripts build",
+    "start": "serve -s build",                 // ✅ untuk production di Railway
+    "build": "CI=false react-scripts build",   // ✅ matikan strict CI supaya warning tidak jadi error
+    "dev": "react-scripts start",              // ✅ tambahan: untuk development lokal
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-},
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -44,4 +46,3 @@
     ]
   }
 }
-
