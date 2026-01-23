@@ -74,7 +74,7 @@ export default function ManageBooksPage() {
         category: book.category || '',
       });
       if (book.coverImage) {
-        setPreviewCoverImage(`http://localhost:3000${book.coverImage}`);
+        setPreviewCoverImage(`https://library-backend-production-1103.up.railway.app${book.coverImage}`);
       }
     } else {
       setEditingBook(null);
@@ -483,4 +483,5 @@ export default function ManageBooksPage() {
       )}
     </div>
   );
+
 }
