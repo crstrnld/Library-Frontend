@@ -1,0 +1,2 @@
+REACT_APP_API_URL=https://library-backend-production-1103.up.railway.app/api
+REACT_APP_ENV=production
