@@ -167,19 +167,20 @@ function BookCard({ book, user }) {
 
   return (
     <>
-      <div className="w-24 h-36 rounded-lg mb-4 overflow-hidden flex items-center justify-center bg-gray-100">
-        {book.coverImage ? (
-          <img
-            src={`${process.env.REACT_APP_BACKEND_URL || 'https://library-backend-production-1103.up.railway.app'}${book.coverImage}`}
-            alt={book.title}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <BookOpen className="w-12 h-12 text-gray-400 opacity-50" />
-        )}
-      </div>
-
-
+      <Card className="h-full flex flex-col hover:scale-105 group">
+        {/* Book Cover */}
+        <div className="w-24 h-36 rounded-lg mb-4 overflow-hidden flex items-center justify-center bg-gray-100">
+          {book.coverImage ? (
+            <img
+              src={`${process.env.REACT_APP_BACKEND_URL || 'https://library-backend-production-1103.up.railway.app'}${book.coverImage}`}
+              alt={book.title}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <BookOpen className="w-12 h-12 text-gray-400 opacity-50" />
+          )}
+        </div>
+  
         {/* Content */}
         <div className="flex-1 space-y-3 mb-4">
           <h3 className="font-bold text-gray-900 line-clamp-2 group-hover:text-primary-600 transition-smooth">
@@ -192,22 +193,24 @@ function BookCard({ book, user }) {
             </Badge>
           )}
         </div>
-
+  
         {/* Info */}
         <div className="border-t border-gray-200 pt-4 mb-4">
           <div className="flex justify-between text-sm">
             <span className="text-gray-600">Available:</span>
-            <span className="font-bold text-gray-900">{book.availableCopies}/{book.totalCopies}</span>
+            <span className="font-bold text-gray-900">
+              {book.availableCopies}/{book.totalCopies}
+            </span>
           </div>
         </div>
-
+  
         {/* Action */}
-        {book.availableCopies > 0 ?  (
+        {book.availableCopies > 0 ? (
           <Button
             size="sm"
             className="w-full"
             onClick={() => setShowModal(true)}
-            disabled={! user}
+            disabled={!user}
           >
             Borrow Book
           </Button>
@@ -217,7 +220,7 @@ function BookCard({ book, user }) {
           </Button>
         )}
       </Card>
-
+  
       {/* Borrow Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
@@ -230,7 +233,7 @@ function BookCard({ book, user }) {
                 label="Due Date"
                 type="date"
                 value={dueDate}
-                onChange={(e) => setDueDate(e. target.value)}
+                onChange={(e) => setDueDate(e.target.value)}
                 min={new Date().toISOString().split('T')[0]}
               />
               <div className="flex gap-3">
@@ -256,6 +259,5 @@ function BookCard({ book, user }) {
     </>
   );
 
-}
 
 
