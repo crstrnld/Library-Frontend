@@ -241,11 +241,20 @@ export default function ManageBooksPage() {
               {/* Book Cover */}
               <div className="w-full h-48 border-2 border-dashed ...">
                 {previewCoverImage ? (
-                  <img src={previewCoverImage} alt="Preview" className="w-full h-full object-cover" />
+                  <img
+                    src={previewCoverImage}
+                    alt="Preview"
+                    className="w-full h-full object-cover"
+                  />
+                ) : book.coverImage ? (
+                  <img
+                    src={`${(process.env.REACT_APP_BACKEND_URL || 'https://library-backend-production-1103.up.railway.app').replace('/api','')}${book.coverImage}`}
+                    alt={book.title}
+                    className="w-full h-full object-cover"
+                  />
                 ) : (
                   <div className="text-center">...</div>
                 )}
-              </div>
               {/* Book Info */}
               <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">{book.title}</h3>
               <p className="text-sm text-gray-600 mb-2">{book.author}</p>
@@ -478,6 +487,7 @@ export default function ManageBooksPage() {
   );
 
 }
+
 
 
 
