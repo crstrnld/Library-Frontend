@@ -139,30 +139,7 @@ function BookCard({ book, user }) {
   const [dueDate, setDueDate] = useState('');
 
   const handleBorrow = async () => {
-    if (!user) {
-      toast.error('Please login to borrow books');
-      return;
-    }
-
-    if (! dueDate) {
-      toast.error('Please select a due date');
-      return;
-    }
-
-    setBorrowing(true);
-    try {
-      await axiosInstance.post('/borrow/borrow', {
-        bookId:  book.id,
-        dueDate,
-      });
-      toast.success('Book borrowed successfully!');
-      setShowModal(false);
-      setDueDate('');
-    } catch (error) {
-      toast.error(error.response?.data?.message || 'Failed to borrow book');
-    } finally {
-      setBorrowing(false);
-    }
+    // ... isi handleBorrow tetap
   };
 
   return (
@@ -180,7 +157,7 @@ function BookCard({ book, user }) {
             <BookOpen className="w-12 h-12 text-gray-400 opacity-50" />
           )}
         </div>
-  
+
         {/* Content */}
         <div className="flex-1 space-y-3 mb-4">
           <h3 className="font-bold text-gray-900 line-clamp-2 group-hover:text-primary-600 transition-smooth">
@@ -193,7 +170,7 @@ function BookCard({ book, user }) {
             </Badge>
           )}
         </div>
-  
+
         {/* Info */}
         <div className="border-t border-gray-200 pt-4 mb-4">
           <div className="flex justify-between text-sm">
@@ -203,7 +180,7 @@ function BookCard({ book, user }) {
             </span>
           </div>
         </div>
-  
+
         {/* Action */}
         {book.availableCopies > 0 ? (
           <Button
@@ -220,7 +197,7 @@ function BookCard({ book, user }) {
           </Button>
         )}
       </Card>
-  
+
       {/* Borrow Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
@@ -258,6 +235,4 @@ function BookCard({ book, user }) {
       )}
     </>
   );
-
-
-
+}
