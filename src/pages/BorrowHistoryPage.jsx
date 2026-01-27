@@ -94,7 +94,8 @@ export default function BorrowHistoryPage() {
 }
 
 function BorrowRecordCard({ record, onReturn }) {
-  const isOverdue = new Date(record.dueDate) < new Date() && record.status === 'borrowed';
+  const isOverdue =
+    new Date(record.dueDate) < new Date() && record.status === 'borrowed';
   const daysLeft = Math.ceil(
     (new Date(record.dueDate) - new Date()) / (1000 * 60 * 60 * 24)
   );
@@ -103,29 +104,30 @@ function BorrowRecordCard({ record, onReturn }) {
     <Card className="flex items-center justify-between p-6">
       <div className="flex items-center space-x-6 flex-1">
         {/* Book Cover */}
-        <div className="w-full h-48 border-2 border-dashed rounded-lg overflow-hidden flex items-center justify-center bg-gray-100">
-          {previewCoverImage ? (
+        <div className="w-24 h-36 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+          {record.Book.coverImage ? (
             <img
-              src={previewCoverImage}
-              alt="Preview"
-              className="w-full h-full object-cover"
-            />
-          ) : book.coverImage ? (
-            <img
-              src={`${(process.env.REACT_APP_BACKEND_URL || 'https://library-backend-production-1103.up.railway.app').replace('/api','')}${book.coverImage}`}
-              alt={book.title}
+              src={`${(process.env.REACT_APP_BACKEND_URL ||
+                'https://library-backend-production-1103.up.railway.app'
+              ).replace('/api', '')}${record.Book.coverImage}`}
+              alt={record.Book.title}
               className="w-full h-full object-cover"
             />
           ) : (
             <BookOpen className="w-12 h-12 text-gray-400 opacity-50" />
           )}
         </div>
+
         {/* Info */}
         <div className="flex-1">
-          <h3 className="font-bold text-gray-900 text-lg">{record.Book.title}</h3>
+          <h3 className="font-bold text-gray-900 text-lg">
+            {record.Book.title}
+          </h3>
           <p className="text-gray-600">{record.Book.author}</p>
           <div className="flex items-center space-x-4 mt-2">
-            <Badge variant={record.status === 'returned' ? 'success' : 'warning'}>
+            <Badge
+              variant={record.status === 'returned' ? 'success' : 'warning'}
+            >
               {record.status}
             </Badge>
             {isOverdue && (
@@ -148,8 +150,14 @@ function BorrowRecordCard({ record, onReturn }) {
             <span>Due: {new Date(record.dueDate).toLocaleDateString()}</span>
           </div>
           {record.status === 'borrowed' && (
-            <p className={`font-semibold ${isOverdue ? 'text-red-600' : 'text-green-600'}`}>
-              {isOverdue ? `${Math.abs(daysLeft)} days overdue` : `${daysLeft} days left`}
+            <p
+              className={`font-semibold ${
+                isOverdue ? 'text-red-600' : 'text-green-600'
+              }`}
+            >
+              {isOverdue
+                ? `${Math.abs(daysLeft)} days overdue`
+                : `${daysLeft} days left`}
             </p>
           )}
         </div>
@@ -164,7 +172,6 @@ function BorrowRecordCard({ record, onReturn }) {
     </Card>
   );
 }
-
 
 
 
