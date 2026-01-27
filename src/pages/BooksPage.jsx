@@ -32,7 +32,7 @@ export default function BooksPage() {
           limit: 12,
         },
       });
-      setBooks(data. data);
+      setBooks(data.data);
       setTotalPages(data.pagination.pages);
     } catch (error) {
       toast.error('Failed to fetch books');
@@ -139,7 +139,29 @@ function BookCard({ book, user }) {
   const [dueDate, setDueDate] = useState('');
 
   const handleBorrow = async () => {
-    // ... isi handleBorrow tetap
+    if (!dueDate) {
+      toast.error('Please select a due date');
+      return;
+    }
+
+    setBorrowing(true);
+    try {
+      const response = await axiosInstance.post('/borrow', {
+        bookId: book.id,
+        dueDate,
+      });
+
+      toast.success('Book borrowed successfully!');
+      console.log('Borrow success:', response.data);
+
+      setShowModal(false);
+      setDueDate('');
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Failed to borrow book');
+      console.error('Borrow error:', error.response?.data || error.message);
+    } finally {
+      setBorrowing(false);
+    }
   };
 
   return (
