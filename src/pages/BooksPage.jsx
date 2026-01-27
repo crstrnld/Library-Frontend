@@ -167,19 +167,17 @@ function BookCard({ book, user }) {
 
   return (
     <>
-      <Card className="h-full flex flex-col hover:scale-105 group">
-        {/* Book Cover */}
-        <div className="w-full h-48 rounded-lg mb-4 overflow-hidden flex items-center justify-center bg-gray-100">
-          {book.coverImage ? (
-            <img
-              src={`${process.env.REACT_APP_BACKEND_URL || 'https://library-backend-production-1103.up.railway.app'}${book.coverImage}`}
-              alt={book.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
-            />
-          ) : (
-      <BookOpen className="w-24 h-24 text-gray-400 opacity-50" />
-    )}
-  </div>
+      <div className="w-20 h-32 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+        {book.coverImage ? (
+          <img
+            src={`${process.env.REACT_APP_BACKEND_URL}${book.coverImage}`}
+            alt={book.title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <BookOpen className="w-10 h-10 text-gray-400 opacity-50" />
+        )}
+      </div>
 
 
         {/* Content */}
@@ -259,3 +257,4 @@ function BookCard({ book, user }) {
   );
 
 }
+
