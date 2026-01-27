@@ -139,6 +139,8 @@ function BookCard({ book, user }) {
   const [dueDate, setDueDate] = useState('');
 
   const handleBorrow = async () => {
+    console.log('✅ Confirm clicked', book.id, dueDate);
+    
     if (!dueDate) {
       toast.error('Please select a due date');
       return;
@@ -258,3 +260,4 @@ function BookCard({ book, user }) {
     </>
   );
 }
+
