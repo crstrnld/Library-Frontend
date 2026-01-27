@@ -103,18 +103,17 @@ function BorrowRecordCard({ record, onReturn }) {
     <Card className="flex items-center justify-between p-6">
       <div className="flex items-center space-x-6 flex-1">
         {/* Book Cover */}
-        <div className="w-16 h-24 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+        <div className="w-20 h-32 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
           {record.Book.coverImage ? (
             <img
               src={`${process.env.REACT_APP_BACKEND_URL || 'https://library-backend-production-1103.up.railway.app'}${record.Book.coverImage}`}
               alt={record.Book.title}
-              className="w-full h-full object-cover transform scale-y-110"
+              className="w-full h-full object-cover"
             />
           ) : (
-            <BookOpen className="w-8 h-8 text-gray-400 opacity-50" />
+            <BookOpen className="w-10 h-10 text-gray-400 opacity-50" />
           )}
         </div>
-
         {/* Info */}
         <div className="flex-1">
           <h3 className="font-bold text-gray-900 text-lg">{record.Book.title}</h3>
@@ -159,3 +158,4 @@ function BorrowRecordCard({ record, onReturn }) {
     </Card>
   );
 }
+
