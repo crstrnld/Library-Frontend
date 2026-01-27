@@ -8,6 +8,7 @@ import Input from '../../components/Input';
 import Card from '../../components/Card';
 import Badge from '../../components/Badge';
 import toast from 'react-hot-toast';
+import { BookOpen, Edit, Trash2 } from 'lucide-react';
 
 export default function ManageBooksPage() {
   const navigate = useNavigate();
@@ -490,6 +491,7 @@ export default function ManageBooksPage() {
   );
 
 }
+
 
 
 
