@@ -94,7 +94,7 @@ export default function BorrowHistoryPage() {
 }
 
 function BorrowRecordCard({ record, onReturn }) {
-  const isOverdue = new Date(record. dueDate) < new Date() && record.status === 'borrowed';
+  const isOverdue = new Date(record.dueDate) < new Date() && record.status === 'borrowed';
   const daysLeft = Math.ceil(
     (new Date(record.dueDate) - new Date()) / (1000 * 60 * 60 * 24)
   );
@@ -102,9 +102,17 @@ function BorrowRecordCard({ record, onReturn }) {
   return (
     <Card className="flex items-center justify-between p-6">
       <div className="flex items-center space-x-6 flex-1">
-        {/* Icon */}
-        <div className="w-16 h-16 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg flex items-center justify-center">
-          <BookOpen className="w-8 h-8 text-primary-600" />
+        {/* Book Cover */}
+        <div className="w-16 h-24 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+          {record.Book.coverImage ? (
+            <img
+              src={`${process.env.REACT_APP_BACKEND_URL || 'https://library-backend-production-1103.up.railway.app'}${record.Book.coverImage}`}
+              alt={record.Book.title}
+              className="w-full h-full object-cover transform scale-y-110"
+            />
+          ) : (
+            <BookOpen className="w-8 h-8 text-gray-400 opacity-50" />
+          )}
         </div>
 
         {/* Info */}
