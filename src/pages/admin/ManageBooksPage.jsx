@@ -1,3 +1,4 @@
+import { BookOpen } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Search, X, Image as ImageIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -483,4 +484,5 @@ export default function ManageBooksPage() {
   );
 
 }
+
 
