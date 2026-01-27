@@ -9,7 +9,6 @@ import Card from '../../components/Card';
 import Badge from '../../components/Badge';
 import toast from 'react-hot-toast';
 
-
 export default function ManageBooksPage() {
   const navigate = useNavigate();
   const { user } = useAuthStore();
@@ -491,6 +490,7 @@ export default function ManageBooksPage() {
   );
 
 }
+
 
 
 
