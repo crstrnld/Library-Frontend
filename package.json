@@ -21,7 +21,7 @@
     "zustand": "^5.0.10"
   },
   "scripts": {
-    "start": "serve -s build",                
+    "start": "serve -s build -l $PORT",                
     "build": "CI=false react-scripts build",
     "dev": "react-scripts start",
     "test": "react-scripts test",
@@ -46,4 +46,5 @@
     ]
   }
 }
+
 
