@@ -239,7 +239,7 @@ export default function ManageBooksPage() {
           {books.map((book) => (
             <Card key={book.id} className="hover:shadow-lg transition-smooth flex flex-col">
               {/* Book Cover */}
-              <div className="w-full h-48 border-2 border-dashed ...">
+              <div className="w-full h-48 border-2 border-dashed rounded-lg overflow-hidden flex items-center justify-center bg-gray-100">
                 {previewCoverImage ? (
                   <img
                     src={previewCoverImage}
@@ -248,13 +248,16 @@ export default function ManageBooksPage() {
                   />
                 ) : book.coverImage ? (
                   <img
-                    src={`${(process.env.REACT_APP_BACKEND_URL || 'https://library-backend-production-1103.up.railway.app').replace('/api','')}${book.coverImage}`}
+                    src={`${(process.env.REACT_APP_BACKEND_URL ||
+                      'https://library-backend-production-1103.up.railway.app'
+                    ).replace('/api','')}${book.coverImage}`}
                     alt={book.title}
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="text-center">...</div>
+                  <BookOpen className="w-12 h-12 text-gray-400 opacity-50" />
                 )}
+              </div>
               {/* Book Info */}
               <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">{book.title}</h3>
               <p className="text-sm text-gray-600 mb-2">{book.author}</p>
@@ -487,6 +490,7 @@ export default function ManageBooksPage() {
   );
 
 }
+
 
 
 
