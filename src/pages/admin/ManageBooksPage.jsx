@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Edit, Trash2, Search, X, Image as ImageIcon } from 'lucide-react';
+import { Plus, Edit, Trash2, Search, X, Image as ImageIcon, BookOpen } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../api/axiosConfig';
 import useAuthStore from '../../store/authStore';
@@ -8,7 +8,7 @@ import Input from '../../components/Input';
 import Card from '../../components/Card';
 import Badge from '../../components/Badge';
 import toast from 'react-hot-toast';
-import { BookOpen, Edit, Trash2 } from 'lucide-react';
+
 
 export default function ManageBooksPage() {
   const navigate = useNavigate();
@@ -491,6 +491,7 @@ export default function ManageBooksPage() {
   );
 
 }
+
 
 
 
