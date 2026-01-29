@@ -4,18 +4,25 @@ import useAuthStore from '../store/authStore';
 // ==========================================
 // BASE URL CONFIGURATION
 // ==========================================
-const getBaseURL = () => {
-  // Development
+const getApiBaseURL = () => {
   if (process.env.NODE_ENV === 'development') {
     return 'http://localhost:3000/api';
   }
-  
-  // Production - gunakan backend domain yang benar
+  // Production - API endpoint
   return 'https://library-backend-production-1103.up.railway.app/api';
 };
 
+// Untuk file statis (uploads), jangan pakai /api
+export const getStaticBaseURL = () => {
+  if (process.env.NODE_ENV === 'development') {
+    return 'http://localhost:3000';
+  }
+  // Production - static files
+  return 'https://library-backend-production-1103.up.railway.app';
+};
+
 const axiosInstance = axios.create({
-  baseURL: getBaseURL(),
+  baseURL: getApiBaseURL(),
   timeout: 15000,
   withCredentials: true,
 });
@@ -26,12 +33,12 @@ console.log('🔗 API Base URL:', axiosInstance.defaults.baseURL);
 axiosInstance.interceptors.request.use(
   (config) => {
     const { token } = useAuthStore.getState();
-    
+
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
       console.log('🎫 Token attached:', token.substring(0, 20) + '...');
     }
-    
+
     console.log(`📤 ${config.method.toUpperCase()} ${config.url}`);
     return config;
   },
@@ -48,19 +55,18 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.error('❌ API Error:',  {
+    console.error('❌ API Error:', {
       status: error.response?.status,
       message: error.response?.data?.message,
       url: error.config?.url,
     });
-    
-    // Handle 401 Unauthorized
+
     if (error.response?.status === 401) {
       console.log('🔐 Token expired - Logging out');
       useAuthStore.getState().logout();
       window.location.href = '/login';
     }
-    
+
     return Promise.reject(error);
   }
 );
