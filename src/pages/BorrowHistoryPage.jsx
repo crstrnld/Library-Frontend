@@ -107,9 +107,7 @@ function BorrowRecordCard({ record, onReturn }) {
         <div className="w-24 h-36 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
           {record.Book.coverImage ? (
             <img
-              src={`${(process.env.REACT_APP_BACKEND_URL ||
-                'https://library-backend-production-1103.up.railway.app'
-              ).replace('/api', '')}${record.Book.coverImage}`}
+              src={record.Book.coverImage}
               alt={record.Book.title}
               className="w-full h-full object-cover"
             />
@@ -172,6 +170,7 @@ function BorrowRecordCard({ record, onReturn }) {
     </Card>
   );
 }
+
 
 
 
