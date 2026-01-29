@@ -248,9 +248,7 @@ export default function ManageBooksPage() {
                   />
                 ) : book.coverImage ? (
                   <img
-                    src={`${(process.env.REACT_APP_BACKEND_URL ||
-                      'https://library-backend-production-1103.up.railway.app'
-                    ).replace('/api','')}${book.coverImage}`}
+                    src={book.coverImage}
                     alt={book.title}
                     className="w-full h-full object-cover"
                   />
@@ -490,6 +488,7 @@ export default function ManageBooksPage() {
   );
 
 }
+
 
 
 
