@@ -173,7 +173,7 @@ function BookCard({ book, user }) {
         <div className="w-24 h-36 rounded-lg mb-4 overflow-hidden flex items-center justify-center bg-gray-100">
           {book.coverImage ? (
             <img
-              src={`${(process.env.REACT_APP_BACKEND_URL || 'https://library-backend-production-1103.up.railway.app').replace('/api','')}${book.coverImage}`}
+              src={book.coverImage}
               alt={book.title}
               className="w-full h-full object-cover"
             />
@@ -260,5 +260,6 @@ function BookCard({ book, user }) {
     </>
   );
 }
+
 
 
