@@ -9,7 +9,7 @@ const getApiBaseURL = () => {
     return 'http://localhost:3000/api';
   }
   // Production - API endpoint
-  return 'https://library-backend-production-1103.up.railway.app/api';
+  return 'https://abcd1234.ngrok.io/api';
 };
 
 // Untuk file statis (uploads), jangan pakai /api
