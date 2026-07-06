@@ -18,7 +18,7 @@ export const getStaticBaseURL = () => {
     return 'http://localhost:3000';
   }
   // Production - static files
-  return 'https://library-backend-production-1103.up.railway.app';
+  return 'http://localhost:3000';
 };
 
 const axiosInstance = axios.create({
